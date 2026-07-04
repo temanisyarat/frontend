@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     default: "TemanIsyarat",
     template: "%s | TemanIsyarat",
   },
+  icons:{
+    icon: '/temanisyarat-icon.png'
+  },
   description:
     "TemanIsyarat adalah aplikasi penerjemah bahasa isyarat berbasis AI untuk komunikasi yang lebih inklusif.",
 };

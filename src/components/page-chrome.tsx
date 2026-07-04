@@ -7,7 +7,7 @@ import hamburgerMenu from "../../assets/web/icons/hamburger-menu.svg";
 import instagramLogo from "../../assets/web/icons/instagram-logo.svg";
 import whatsappLogo from "../../assets/web/icons/whatsapp-logo.svg";
 import githubLogo from "../../assets/web/icons/github-logo.svg";
-import googlePlayBadge from "../../assets/web/icons/get-it-on-google-play.webp";
+import googlePlayBadge from "../../assets/web/icons/get-it-on-google-play.svg";
 
 export type AssetSource = string | { src: string };
 
@@ -37,11 +37,11 @@ const footerAppLinks: NavItem[] = [
   { label: "Dataset", href: "https://github.com/temanisyarat/dataset", external: true },
 ];
 
-const footerProjectLinks: NavItem[] = [
-  { label: "Latar Belakang", href: "/artikel/tentang-gerkatin" },
-  { label: "Metodologi", href: "/artikel/tentang-gerkatin" },
-  { label: "Pengembangan Lebih Lanjut", href: "/artikel/tentang-gerkatin" },
-];
+// const footerProjectLinks: NavItem[] = [
+//   { label: "Latar Belakang", href: "/artikel/tentang-gerkatin" },
+//   { label: "Metodologi", href: "/artikel/tentang-gerkatin" },
+//   { label: "Pengembangan Lebih Lanjut", href: "/artikel/tentang-gerkatin" },
+// ];
 
 function resolveAssetSrc(asset: AssetSource) {
   return typeof asset === "string" ? asset : asset.src;
@@ -211,90 +211,95 @@ function SocialIconLink({ href, src, label }: { href: string; src: AssetSource; 
       href={href}
       external={href.startsWith("http")}
       ariaLabel={label}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-full text-[#111111] transition hover:bg-black/5"
+      className="inline-flex h-10 w-10 items-center justify-center rounded-full 
+        text-[#111111] transition hover:bg-black/5"
     >
       <InlineImage src={src} alt="" className="h-5 w-5" />
     </SmartLink>
   );
 }
 
-export function ArticleDetailFooter() {
-  return (
-    <footer className="bg-[#eeeeee]">
-      <div className="mx-auto max-w-[1150px] px-6 pb-4 pt-8 sm:px-10 lg:px-[300px]">
-        <div className="flex flex-col gap-8">
-          <div className="flex flex-wrap gap-2">
-            <FooterLinkColumn title="Navigasi" links={footerNavLinks} />
-            <FooterLinkColumn title="Aplikasi" links={footerAppLinks} />
-            <FooterLinkColumn title="Tentang Kegiatan" links={footerProjectLinks} />
-          </div>
-
-          <div className="space-y-6">
-            <div className="inline-flex max-w-[240px]">
-              <InlineImage src={googlePlayBadge} alt="Get it on Google Play" className="h-auto w-full" />
-            </div>
-
-            <div className="space-y-4">
-              <p className="text-[16px] font-semibold leading-none text-[#111111]">Get in Touch</p>
-              <div className="flex items-center gap-4">
-                <SocialIconLink href="https://www.instagram.com/temanisyarat.uns/" src={instagramLogo} label="Instagram TemanIsyarat" />
-                <SocialIconLink href="#" src={whatsappLogo} label="WhatsApp TemanIsyarat" />
-                <SocialIconLink
-                  href="https://github.com/temanisyarat"
-                  src={githubLogo}
-                  label="GitHub TemanIsyarat"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-8 text-center text-[10px] leading-none text-[#111111]">
-          © 2026 ⋅ TemanIsyarat ⋅ Universitas Sebelas Maret
-        </div>
-      </div>
-    </footer>
-  );
-}
-
 export function SiteFooter() {
   return (
     <footer id="footer" className="bg-[#eeeeee]">
-      <div className="mx-auto max-w-[1440px] px-6 py-12 sm:px-10 lg:px-32 lg:py-20">
+      <div className="mx-auto max-w-[1440px] px-6 pt-12 
+        sm:px-10 lg:px-32 lg:pt-20
+        flex flex-col lg:gap-12">
         <div className="flex flex-col justify-between gap-12 lg:flex-row">
           <div className="flex flex-wrap gap-8">
             <FooterLinkColumn title="Navigasi" links={footerNavLinks} />
             <FooterLinkColumn title="Aplikasi" links={footerAppLinks} />
-            <FooterLinkColumn title="Tentang Kegiatan" links={footerProjectLinks} />
+            {/* <FooterLinkColumn title="Tentang Kegiatan" links={footerProjectLinks} /> */}
           </div>
 
-          <div className="space-y-5">
-            <p className="px-3 text-[16px] font-semibold leading-none text-[#111111]">Get in Touch</p>
-            <div className="flex items-center gap-4 px-3">
+          <div className="flex flex-col gap-4 p-4">
+            <p className="text-[16px] font-semibold leading-none text-[#111111]">Get in Touch</p>
+            <div className="flex items-center gap-4">
               <SocialIconLink href="https://www.instagram.com/temanisyarat.uns/" src={instagramLogo} label="Instagram TemanIsyarat" />
               <SocialIconLink href="#" src={whatsappLogo} label="WhatsApp TemanIsyarat" />
               <SocialIconLink href="https://github.com/temanisyarat" src={githubLogo} label="GitHub TemanIsyarat" />
             </div>
-
-            <div className="w-full max-w-[489px] space-y-4 p-4">
-              <div>
-                <InlineImage src={logoGroupSmall} alt="TemanIsyarat" className="h-auto w-[140px]" />
-              </div>
-              <p className="max-w-[488px] text-[12px] leading-[1.5] text-[#111111]">
-                TemanIsyarat adalah aplikasi penerjemah bahasa isyarat berbasis kecerdasan buatan yang dirancang untuk menjembatani komunikasi menjadi lebih inklusif dan tanpa hambatan.
-              </p>
-
-              <div className="inline-flex max-w-[240px]">
-                <InlineImage src={googlePlayBadge} alt="Get it on Google Play" className="h-auto w-full" />
-              </div>
-            </div>
           </div>
         </div>
 
-        <div className="mt-8 text-center text-[10px] leading-none text-[#111111]">
+        <SmartLink href="#" className="w-full space-y-8 p-4">
+            <div>
+              <InlineImage src={logoGroupSmall} alt="TemanIsyarat" className="h-auto w-[140px]" />
+            </div>
+            <p className="max-w-[488px] text-md leading-[1.5] text-[#111111]">
+              TemanIsyarat adalah aplikasi penerjemah bahasa isyarat berbasis kecerdasan buatan yang dirancang untuk menjembatani komunikasi menjadi lebih inklusif dan tanpa hambatan.
+            </p>
+
+            <div className="inline-flex max-w-[240px]">
+              <InlineImage src={googlePlayBadge} alt="Get it on Google Play" className="h-auto w-full" />
+            </div>
+        </SmartLink>
+        
+        
+        <div className="mt-8 mb-2 text-center text-[10px] leading-none text-[#111111]">
           © 2026 ⋅ TemanIsyarat ⋅ Universitas Sebelas Maret
         </div>
       </div>
     </footer>
   );
 }
+
+
+// export function ArticleDetailFooter() {
+//   return (
+//     <footer className="bg-[#eeeeee]">
+//       <div className="mx-auto max-w-[1150px] px-6 pb-4 pt-24 sm:px-10 ">
+//         <div className="flex lg:flex-row align-top justify-between flex-col gap-8">
+//           <div className="flex flex-wrap gap-2">
+//             <FooterLinkColumn title="Navigasi" links={footerNavLinks} />
+//             <FooterLinkColumn title="Aplikasi" links={footerAppLinks} />
+//             {/* <FooterLinkColumn title="Tentang Kegiatan" links={footerProjectLinks} /> */}
+//           </div>
+
+//           <div className="space-y-6">
+//             <div className="inline-flex max-w-[240px]">
+//               <InlineImage src={googlePlayBadge} alt="Get it on Google Play" className="h-auto w-full" />
+//             </div>
+
+//             <div className="space-y-4">
+//               <p className="text-[16px] font-semibold leading-none text-[#111111]">Get in Touch</p>
+//               <div className="flex items-center gap-4">
+//                 <SocialIconLink href="https://www.instagram.com/temanisyarat.uns/" src={instagramLogo} label="Instagram TemanIsyarat" />
+//                 <SocialIconLink href="#" src={whatsappLogo} label="WhatsApp TemanIsyarat" />
+//                 <SocialIconLink
+//                   href="https://github.com/temanisyarat"
+//                   src={githubLogo}
+//                   label="GitHub TemanIsyarat"
+//                 />
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+
+//         <div className="mt-24 text-center text-[10px] leading-none text-[#111111]">
+//           © 2026 ⋅ TemanIsyarat ⋅ Universitas Sebelas Maret
+//         </div>
+//       </div>
+//     </footer>
+//   );
+// }

@@ -53,10 +53,12 @@ async function fetchSanity<T>(query: string, fallback: T): Promise<T> {
   return payload.result ?? fallback;
 }
 
-export async function getArticles(limit = 6): Promise<SanityArticle[]> {
+export async function getArticles(page = 1, limit = 6): Promise<SanityArticle[]> {
   const safeLimit = Math.max(1, Math.min(Math.floor(limit), 12));
+  const safePage = Math.max(1, Math.floor(page));
+  const offset = (safePage - 1) * safeLimit;
 
-  const query = `*[_type == "article"] | order(date desc)[0...${safeLimit}] {
+  const query = `*[_type == "article"] | order(date desc)[${offset}...${offset + safeLimit}] {
     _id,
     article,
     "slug": slug.current,
@@ -79,6 +81,11 @@ export async function getArticles(limit = 6): Promise<SanityArticle[]> {
   }`;
 
   return fetchSanity<SanityArticle[]>(query, []);
+}
+
+export async function getTotalArticles(): Promise<number> {
+  const query = `count(*[_type == "article"])`;
+  return fetchSanity<number>(query, 0);
 }
 
 export async function getArticleBySlug(slug: string): Promise<SanityArticle | null> {

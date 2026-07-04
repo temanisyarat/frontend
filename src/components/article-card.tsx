@@ -23,20 +23,33 @@ export function ArticleCard({
   date,
   readingTime,
 }: ArticleCardProps) {
-  const cardClassName = highlighted
-    ? "bg-[#05059e] text-[#eeeeee]"
-    : "bg-[#e5e8fa] text-[#111111] hover:-translate-y-1";
+  // const cardClassName = highlighted
+  //   ? "bg-[#05059e] text-[#eeeeee]"
+  //   : "bg-[#e5e8fa] text-[#111111] ";
   const descriptionClassName = highlighted ? "text-[#eeeeee]" : "text-[#111111]";
 
   return (
     <SmartLink
       href={href}
-      className={`block rounded-[32px] p-8 transition-transform ${cardClassName}`}
+      className={`block rounded-[32px] text-bg-[#05059e] bg-[#e5e8fa] p-8 transition duration-200 
+        hover:bg-[#05059e] hover:text-white group`}
     >
-      <article className="space-y-6">
-        <h3 className="text-[32px] font-semibold leading-none">{title}</h3>
+      <article className="flex flex-col h-full gap-4 justify-between">
+        <div className="flex flex-col gap-4">
+          <h3 className="text-[32px] font-semibold leading-none line-clamp-3">{title}</h3>
 
-        <div className="relative h-[213px] overflow-hidden rounded-[24px]">
+          {/* <p className={`text-[14px] leading-[1.5] ${descriptionClassName}`}>{excerpt}</p> */}
+
+          <div
+            className={`group-hover:text-white flex items-center gap-1 text-[16px] leading-[1.5] tracking-[0.6px] ${descriptionClassName} `}
+          >
+            <span>{formatArticleDate(date)}</span>
+            <span>•</span>
+            <span className="">{formatReadTime(readingTime)}</span>
+          </div>
+        </div>
+
+        <div className="relative h-[213px] bottom-0 overflow-hidden rounded-[24px]">
           {imageUrl ? (
             <Image
               src={imageUrl}
@@ -52,16 +65,6 @@ export function ArticleCard({
               className="h-full w-full rounded-[24px] object-cover"
             />
           )}
-        </div>
-
-        <p className={`text-[14px] leading-[1.5] ${descriptionClassName}`}>{excerpt}</p>
-
-        <div
-          className={`flex items-center gap-1 text-[16px] leading-[1.5] tracking-[0.6px] ${descriptionClassName}`}
-        >
-          <span>{formatArticleDate(date)}</span>
-          <span>•</span>
-          <span>{formatReadTime(readingTime)}</span>
         </div>
       </article>
     </SmartLink>

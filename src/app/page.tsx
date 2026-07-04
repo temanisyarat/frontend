@@ -1,12 +1,11 @@
 import Image from "next/image";
 
-import desktopHero from "../../assets/web/images/web-desktop-landing-page-image.webp";
-import mobileHero from "../../assets/web/images/mobile-ui-beranda.webp";
-import articlePreview from "../../assets/web/images/mobile-ui-artikel.webp";
+import desktopHero from "../../assets/web/images/desktop-final.png";
+import mobileHero from "../../assets/web/images/Beranda-final.png";
 import illustrationMedium from "../../assets/illustrations/illustration-medium.svg";
-import logoGroupSmall from "../../assets/logo/logo-group-small.svg";
 import cheersPlaceholder from "../../assets/placeholders/cheers.jpg";
-import memberWilli from "../../assets/members/willi.png";
+import fotoWili from "../../assets/members/1.png";
+import fotoPakHeri from "../../assets/members/10.png";
 import {
   ActionButton,
   InlineImage,
@@ -14,6 +13,7 @@ import {
   SiteFooter,
   SiteHeader,
 } from "@/components/page-chrome";
+import { TeamCard } from "@/components/team-card";
 
 const featureCards = [
   {
@@ -56,15 +56,15 @@ const processCards = [
 
 const teamCards = [
   {
-    title: "Yang Bener Aja",
+    title: "Heri Prasetyo, S.Kom., M.Sc.Eng., Ph.D.",
     role: "Dosen Pembimbing",
-    image: memberWilli,
+    image: fotoPakHeri,
     imagePosition: "center top",
   },
   {
     title: "Dunhill William",
     role: "Ketua Tim",
-    image: memberWilli,
+    image: fotoWili,
     imagePosition: "center right",
   },
 ] as const;
@@ -76,8 +76,8 @@ export default function Home() {
 
       <main className="flex-1">
         <section className="overflow-hidden bg-[#e5e8fa]" aria-label="Hero">
-          <div className="mx-auto flex max-w-[1440px] flex-col items-center px-6 pt-10 sm:px-10 lg:px-32 lg:pt-16 lg:gap-4 md:gap-2.5 gap-1.5">
-            <InlineImage src={logoGroupSmall} alt="TemanIsyarat" className="h-auto w-[140px]" />
+          <div className="mx-auto flex max-w-[1440px] flex-col items-center 
+          px-6 pt-10 sm:px-10 lg:px-32 lg:pt-16 lg:gap-4 md:gap-2.5 gap-1.5">
 
             <div className="mt-6 flex max-w-3xl flex-col items-center gap-6 text-center lg:mt-8">
               <h1 className="text-balance text-[clamp(2.15rem,4vw,2.5rem)] font-bold leading-[1.3] tracking-tight text-[#111111]">
@@ -97,7 +97,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="mt-6 flex w-4/5 justify-center md:mt-8 lg:mt-12">
+            <div className="mt-6 flex w-4/5 justify-center md:mt-8 lg:mt-12 relative bottom-0">
               <div className="hidden w-full max-w-6xl md:block">
                 <InlineImage
                   src={desktopHero}
@@ -117,51 +117,59 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="tentang" className="mx-auto max-w-[1440px] px-6 py-16 sm:px-10 lg:px-32 lg:py-20">
-          <SectionTitle>Apa itu TemanIsyarat?</SectionTitle>
+        <section id="tentang" className="
+          min-h-screen mx-auto max-w-[1440px] flex items-center">
+          <div className=" px-6 py-16 sm:px-10 lg:px-32 lg:py-20">
+            <SectionTitle>Apa itu TemanIsyarat?</SectionTitle>
 
-          <div className="mt-10 grid items-center gap-10 text-center lg:text-left lg:grid-cols-[305px_minmax(0,1fr)]">
-            <div className="flex justify-center">
-              <div className="flex w-full max-w-[305px] items-center justify-center rounded-[32px] bg-[#eaeaea] p-3">
-                <InlineImage
-                  src={illustrationMedium}
-                  alt="Ilustrasi TemanIsyarat"
-                  className="h-auto w-full object-contain"
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-col items-center gap-6 lg:items-start">
-              <p className="text-[clamp(1.5rem,3vw,2rem)] leading-[1.3] text-[#111111]">
-                TemanIsyarat adalah aplikasi penerjemah bahasa isyarat berbasis kecerdasan buatan yang dirancang
-                untuk menjembatani komunikasi menjadi lebih inklusif dengan teknologi.
-              </p>
-
-              <div className="flex justify-center lg:justify-start">
-                <ActionButton href="/tentang" tone="blue" arrow>
-                  Baca Lebih Lanjut
-                </ActionButton>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-[1440px] px-6 pb-16 sm:px-10 lg:px-32 lg:pb-20">
-          <div className="grid gap-6 lg:grid-cols-3">
-            {featureCards.map((card) => (
-              <article key={card.title} className="rounded-[24px] bg-[#e5e8fa] p-10 text-left">
-                <div className="flex h-full min-h-60 md:min-h-52 lg:min-h-80 flex-col justify-between sm:gap-3 lg:gap-8">
-                  <h3 className="text-[clamp(1.6rem,2vw,2rem)] font-semibold leading-none text-[#111111]">
-                    {card.title}
-                  </h3>
-                  <p className="text-[16px] md:text-lg leading-[1.5] text-[#111111]">{card.body}</p>
+            <div className="mt-10 grid items-center gap-10 text-center lg:text-left lg:grid-cols-[305px_minmax(0,1fr)]">
+              <div className="flex justify-center">
+                <div className="flex w-full max-w-[305px] items-center justify-center rounded-[32px] bg-[#eaeaea] p-3">
+                  <InlineImage
+                    src={illustrationMedium}
+                    alt="Ilustrasi TemanIsyarat"
+                    className="h-auto w-full object-contain"
+                  />
                 </div>
-              </article>
-            ))}
+              </div>
+
+              <div className="flex flex-col items-center gap-6 lg:items-start">
+                <p className="text-[clamp(1.5rem,3vw,2rem)] leading-[1.3] text-[#111111]">
+                  TemanIsyarat adalah aplikasi penerjemah bahasa isyarat berbasis kecerdasan buatan yang dirancang
+                  untuk menjembatani komunikasi menjadi lebih inklusif dengan teknologi.
+                </p>
+
+                <div className="flex justify-center lg:justify-start">
+                  <ActionButton href="/tentang" tone="blue" arrow>
+                    Baca Lebih Lanjut
+                  </ActionButton>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section className="bg-[#e5e8fa] py-16 lg:py-24">
+        <section className="mx-auto max-w-[1440px] 
+        min-h-screen flex flex-col align-middle justify-center">
+          <div className="px-6 pb-16 sm:px-10 lg:px-32 lg:pb-20">
+            <SectionTitle>Fitur-fitur Utama</SectionTitle>
+            <div className="grid gap-6 lg:grid-cols-3 mt-10">
+              {featureCards.map((card) => (
+                <article key={card.title} className="rounded-[24px] bg-[#e5e8fa] p-10 text-left">
+                  <div className="flex h-full min-h-60 md:min-h-52 lg:min-h-80 flex-col justify-between sm:gap-3 lg:gap-8">
+                    <h3 className="text-[clamp(1.6rem,2vw,2rem)] font-semibold leading-none text-[#111111]">
+                      {card.title}
+                    </h3>
+                    <p className="text-[16px] md:text-lg leading-[1.5] text-[#111111]">{card.body}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#e5e8fa] py-16 lg:py-24
+          min-h-screen flex flex-col justify-center">
           <div className="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-32">
             <p className="mx-auto max-w-5xl text-center text-[clamp(1.25rem,3vw,2rem)] leading-[1.5] text-[#111111]">
               <span className="text-[#0000cc]">
@@ -174,7 +182,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="tujuan" className="mx-auto max-w-[1440px] px-6 py-16 sm:px-10 lg:px-32 lg:py-20">
+        <section id="tujuan" className="mx-auto max-w-[1440px] 
+          px-6 py-16 sm:px-10 lg:px-32 lg:py-20
+          min-h-screen flex flex-col justify-center">
           <SectionTitle>Tujuan Spesifik</SectionTitle>
 
           <div className="mt-10 space-y-6">
@@ -186,7 +196,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="proses" className="mx-auto max-w-[1440px] px-6 py-16 sm:px-10 lg:px-32 lg:py-20">
+        <section id="proses" className="mx-auto max-w-[1440px] 
+          px-6 py-16 sm:px-10 lg:px-32 lg:py-20
+          min-h-screen flex flex-col justify-center">
           <SectionTitle>Proses Pengembangan</SectionTitle>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -209,7 +221,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="dataset" className="mx-auto max-w-[1440px] px-6 py-16 sm:px-10 lg:px-32 lg:py-20">
+        <section id="dataset" className="mx-auto max-w-[1440px] 
+          px-6 py-16 sm:px-10 lg:px-32 lg:py-20
+          min-h-screen flex flex-col justify-center">
           <SectionTitle accent={false}>Dataset</SectionTitle>
 
           <div className="mt-10 rounded-[24px] bg-[#e5e8fa] px-6 py-8 lg:px-16 lg:py-16">
@@ -226,7 +240,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="tim" className="mx-auto max-w-[1440px] px-6 py-16 sm:px-10 lg:px-32 lg:py-20">
+        <section id="tim" className="mx-auto max-w-[1440px]
+          px-6 py-16 sm:px-10 lg:px-32 lg:py-20
+          min-h-screen flex flex-col justify-center">
           <SectionTitle accent={false}>Profil Tim Pengembang</SectionTitle>
 
           <div className="mt-10 rounded-[64px] bg-[#e5e8fa] px-6 py-8 lg:px-16 lg:py-16">
@@ -234,27 +250,13 @@ export default function Home() {
               {/* container buat card dipisah dari button biar bisa distyling sendiri2 */}
               <div className="flex gap-6 sm:flex-row flex-col items-center w-full lg:max-w-3/5">
                 {teamCards.map((card) => (
-                  <article key={card.title} className="w-full rounded-[24px] bg-white p-6 text-center md:text-left">
-                    <div className="flex flex-col gap-6">
-                      <div className="relative h-[231px] overflow-hidden rounded-[12px] bg-[#d7d7d7]">
-                        <Image
-                          src={card.image}
-                          alt={card.title}
-                          fill
-                          className="object-cover"
-                          style={{ objectPosition: card.imagePosition }}
-                          sizes="272px"
-                        />
-                      </div>
-
-                      <div className="space-y-1">
-                        <h3 className="text-[clamp(1.5rem,2vw,2rem)] font-semibold leading-none text-[#111111]">
-                          {card.title}
-                        </h3>
-                        <p className="text-[16px] leading-none mt-4 text-[#111111]">{card.role}</p>
-                      </div>
-                    </div>
-                  </article>
+                  <TeamCard
+                  key={`${card.title}`}
+                  name={card.title}
+                  role={card.role}
+                  imageUrl={card.image}
+                  />
+                  
                 ))}
               </div>
 
@@ -267,7 +269,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="gerkatin" className="mx-auto max-w-[1440px] px-6 py-16 sm:px-10 lg:px-32 lg:py-20">
+        <section id="gerkatin" className="mx-auto max-w-[1440px] 
+          px-6 py-16 sm:px-10 lg:px-32 lg:py-20
+          min-h-screen flex flex-col justify-center">
           <SectionTitle>Tentang GERKATIN</SectionTitle>
 
           <div className="mt-10 grid items-center gap-10 text-center lg:text-left lg:grid-cols-[305px_minmax(0,1fr)]">
